@@ -54,10 +54,6 @@ Library-Management-System/
    - `borrow_date` (Date)
    - `return_date` (Date)
 
-## 📌 Database Diagram
-
-![Database Diagram](https://via.placeholder.com/800x400?text=Database+Diagram)
-
 ## 🔗 API Endpoints
 
 ### User Authentication
