@@ -18,6 +18,23 @@ app = Flask(__name__)
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 
+if not MONGO_URI:
+    print("❌ MONGO_URI is missing!")
+    raise ValueError("MONGO_URI is not set. Add it to Render environment variables.")
+
+try:
+    client = MongoClient(MONGO_URI)
+    db = client.get_database("library_db")  # Replace with your actual database name
+
+    if db:
+        print("✅ Successfully connected to MongoDB!")
+    else:
+        print("❌ Database connection failed!")
+
+except Exception as e:
+    print(f"❌ MongoDB Connection Error: {e}")
+    db = None  # Prevent app from crashing
+
 # Configure JWT authentication
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
 jwt = JWTManager(app)
