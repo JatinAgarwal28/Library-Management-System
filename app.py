@@ -42,7 +42,7 @@ def login():
     if user["role"] != selected_role:
         return jsonify({"error": "Incorrect role selected!"}), 403
     
-    access_token = create_access_token(identity={"email": email, "role": user["role"]})
+    # access_token = create_access_token(identity={"email": email, "role": user["role"]})
     
     if user["role"] == "librarian":
         return redirect(url_for("librarian_home"))
